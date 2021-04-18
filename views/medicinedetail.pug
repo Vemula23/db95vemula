@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+
+  - let medicineid = toShow._id
+  - let medicinetype = toShow.type
+  - let medicinecost = toShow.cost
+  - let medicinename = toShow.name
+  div
+    div.row
+      div(class='def') medicine ID is:
+      div #{medicineid}
+    div.row
+      div(class='def') medicine Type is:
+      div #{medicinetype}
+    div.row
+      div(class='def') medicine cost is:
+      div #{medicinecost}
+    div.row
+      div(class='def') medicine name is:
+      div #{medicinename}

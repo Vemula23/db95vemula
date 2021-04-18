@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to Assignment 10 in Medicine.Pug
+  div(class="container-fluid")
+        div(class="row")
+            -
+                let medicine = [
+                    {
+                        "type": "Herbal",
+                        "cost": 100,
+                        "name": "paracetmol"
+                    },
+                    {
+                        "type": "Non herbal",
+                        "cost": 50,
+                        "name": "Azythromycin"
+                    },
+                    {
+                        "type": "Ayurvedic",
+                        "cost": 20,
+                        "name": "crocin"
+                    },                   
+                ]
+                div(class="col-sm-2" onclick=`buy(${index})`) #{s.type}
+                div(class="col-sm-2" onclick=`buy(${index})`) #{s.cost}
+                div(class="col-sm-2" onclick=`buy(${index})`) #{s.name}
+  script.                
+        function buy(intemNo)
+        {
+              alert(`you purchased Item ${intemNo+1}`)
+        }

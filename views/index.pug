@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to Venkatesh Vemula's #{title} lab
+  button(type="button",class="btn btn-primary" onclick="update()") Press Me
+  div(id = "target")  display
+  a(href='/medicine') Medicine page link
+  script.  
+   var client_count=0;
+     function update() {
+       client_count++;
+       document.getElementById("target").innerHTML=`Value now ${client_count}`;
+     }

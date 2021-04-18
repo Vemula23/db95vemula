@@ -1,0 +1,24 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+ 
+a {
+  color: #55d671;
+}
+.row {
+}
+.medicineAttr {
+  border: 1px solid rgb(167, 31, 31);
+  background-color: medicinemarine;
+  width: 350px;
+  float: left;
+  padding-left: 10px;
+}
+.def {
+  float: right;
+}
+h1 {
+  background-color: rgb(61, 31, 192);
+  color: rgb(143, 28, 81);
+}

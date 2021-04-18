@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  h1= title
+
+  - let medicineid = toShow._id
+  - let medicinetype = toShow.type
+  - let medicinecost = toShow.cost
+  - let medicinename = toShow.name
+  
+  div.row(class='mb-2')
+    div.mr-1 ID is
+    div #{medicineid}
+  - let actionid = "/resource/medicine/" + medicineid
+  form(id='MedicineForm', action= actionid, method="PUT")
+    div.form-group
+        label.medicineAttr(for='medicinetype') Medicine type
+        input#medicinetype(type='text', name='medicinetype', value= medicinetype )
+    div.form-group
+        label.medicineAttr(for='cost') Medicine cost
+        input#size(type='number', name='size', value= medicinecost )
+    div.form-group
+        label.medicineAttr(for='name') Medicine name
+        input#cost(type='text', name='name', value= medicinename )
+    input(type="submit")
+
+  script.
+    document.forms['CostumeForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'PUT',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Update succeded")
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Update failed " + error )
+      });
+    });
