@@ -38,12 +38,22 @@ try {
 let result = await document.save();
 res.send(result);
  } catch (err) {
-res.error(500, `{"error": ${err}}`);
+res.send(err);
  }
 };
 // Handle medicine delete form on DELETE.
 
-
+exports.medicine_view_all_Page = async function (req, res) {
+    try {
+      theMobile = await Medicine.find();
+      res.render("medicine", {
+        title: "mobile Search Results",
+        results: theMobile,
+      });
+    } catch (err) {
+      res.error(500, `{"error": ${err}}`);
+    }
+  };
 
 // Handle medicine update form on PUT.
 exports.medicine_update_put = async function (req, res) {
@@ -85,7 +95,7 @@ exports.medicine_view_one_Page = async function(req, res) {
     }
     catch(err){
         res.status(500)
-        res.send(`{'error': '${err}'}`);
+        res.status(500).send(`{'error': '${err}'}`);
     }
 };
 

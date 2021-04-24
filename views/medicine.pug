@@ -4,30 +4,29 @@ block content
   h1= title
   p Welcome to Assignment 10 in Medicine.Pug
   div(class="container-fluid")
-        div(class="row")
-            -
-                let medicine = [
-                    {
-                        "type": "Herbal",
-                        "cost": 100,
-                        "name": "paracetmol"
-                    },
-                    {
-                        "type": "Non herbal",
-                        "cost": 50,
-                        "name": "Azythromycin"
-                    },
-                    {
-                        "type": "Ayurvedic",
-                        "cost": 20,
-                        "name": "crocin"
-                    },                   
-                ]
-                div(class="col-sm-2" onclick=`buy(${index})`) #{s.type}
-                div(class="col-sm-2" onclick=`buy(${index})`) #{s.cost}
-                div(class="col-sm-2" onclick=`buy(${index})`) #{s.name}
+        div(class="row m-1")
+         - var i=0
+         button.btn( class="btn-primary ml-1", onclick= create) create
+         br
+         br
+         each form in results
+          - let destination = `dispatch(\"/medicine/update?id=${form._id}\")`
+          - let  detail= `dispatch(\"/mobile/detail?id=${form._id}\")`
+          div(class="col-sm-2",onclick=`buy(${i})`,style="margin:15px") type: #{form.type} - cost: #{form.cost} - prize: #{form.name} 
+          button.btn( class="btn-primary ml-1", onclick= destination) Update
+          button.btn( class="btn-primary ml-1", onclick= detail) detail
+          -i=i+1
+
   script.                
-        function buy(intemNo)
-        {
+   function buy(intemNo){
               alert(`you purchased Item ${intemNo+1}`)
-        }
+   }
+   function dispatch(path){
+        window.location.href=path
+   }
+   function create(path){
+     window.location.href=path
+   }
+   function detail(path){
+     window.location.href=path
+   }
